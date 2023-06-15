@@ -6,3 +6,8 @@ export interface ButtonType  {
     handleClick?: MouseEventHandler<HTMLButtonElement>;
     btnType?: 'reset' | 'button' | 'submit';
 }
+
+export interface SearchManufacturerType {
+    manufacturer: string;
+    setManufacturer: React.Dispatch<React.SetStateAction<string>>;
+}
