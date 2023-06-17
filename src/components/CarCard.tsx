@@ -4,6 +4,8 @@ import { calculateCarRent } from "@/utils";
 import Image from "next/image";
 import { useState } from "react";
 import CustomButton from "./CustomButton";
+import CarDetails from "./CarDetails";
+import { isPageStatic } from "next/dist/build/utils";
 interface CarCardProps {
   car: CarType;
 }
@@ -20,6 +22,7 @@ const CarCard = ({ car }: CarCardProps) => {
       </div>
       <p className="flex font-bold text-[32px] mt-6">
         <span className="self-start text-[14px] font-extrabold">$</span>
+
         {carRent}
 
         <span className="self-end text-[14px] font-semibold">/day</span>
@@ -65,6 +68,11 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
