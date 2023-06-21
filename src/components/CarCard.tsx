@@ -1,11 +1,10 @@
 "use client";
 import { CarType } from "@/types";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateImage } from "@/utils";
 import Image from "next/image";
 import { useState } from "react";
 import CustomButton from "./CustomButton";
 import CarDetails from "./CarDetails";
-import { isPageStatic } from "next/dist/build/utils";
 interface CarCardProps {
   car: CarType;
 }
@@ -29,7 +28,7 @@ const CarCard = ({ car }: CarCardProps) => {
       </p>
       <div className="relative my-3 object-contain w-full h-40">
         <Image
-          src={"/hero.png"}
+          src={generateImage(car)}
           alt={"logo"}
           fill
           priority

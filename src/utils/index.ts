@@ -1,3 +1,5 @@
+import { CarType } from "@/types";
+
 const axios = require('axios');
 
 // const options = {
@@ -42,4 +44,18 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
     const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
   
     return rentalRatePerDay.toFixed(0);
-  };
+  }; 
+
+export const generateImage = ( car: CarType, angle?: string) => {
+    const url = new URL('https://cdn.imagin.studio/getImage')
+    const {make, model, year} = car
+    url.searchParams.append('customer', process.env.NEXT_PUBLIC_IMAGE_KEY)
+    url.searchParams.append('modelFamily', model.split(' ')[0])
+    url.searchParams.append('make', make)
+    url.searchParams.append('zoomType', 'fullscreen')
+    url.searchParams.append('modelYear', `${year}`)
+    url.searchParams.append('angle', `${angle}`)
+
+    return `${url}`
+
+}

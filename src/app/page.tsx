@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
 import { fetchCars } from "@/utils";
 
-export default async function Home() {
+const Home = async () => {
   const allCars = await fetchCars();
 
   const checkEmpty = !Array.isArray(allCars) || allCars.length <= 0 || !allCars;
@@ -26,6 +26,7 @@ export default async function Home() {
           <CustomFilter title="year" />
         </div>
 
+        {/* Display Car in Cards */}
         {!checkEmpty ? (
           <section>
             <div className="home__cars-wrapper">
@@ -45,4 +46,6 @@ export default async function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
