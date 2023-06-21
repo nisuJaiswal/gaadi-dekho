@@ -1,4 +1,4 @@
-import { CarType } from "@/types";
+import { CarType, FilterType } from "@/types";
 
 const axios = require('axios');
 
@@ -19,16 +19,18 @@ const axios = require('axios');
 // 	console.error(error);
 // }
 
-export const fetchCars = async() =>  {
+export const fetchCars = async(filters: FilterType) =>  {
+    const {manufacturer, year, model, fuel, limit} = filters
     const headers = {
         'X-RapidAPI-Key': 'f96cd960e9msh177ddea4b46e5dfp17a873jsn35ab88d6386c',
         'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
     }
     
-    const res = await axios.get('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla', {headers})
-
-    // console.log(res)
-    return res.data
+    const {data} = await axios.get(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&limit=${limit}&fuel_type=${fuel}&model=${model}`, {headers})
+    // const res = await axios.get(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m8&model=bmw`, {headers})
+    
+    console.log(data)
+    return data
 }
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
@@ -58,4 +60,12 @@ export const generateImage = ( car: CarType, angle?: string) => {
 
     return `${url}`
 
+}
+
+export const updateSearchParams = (type:string, value:string) => {
+    const url = new URLSearchParams(window.location.search)
+    
+    url.set(type, value)
+    const newPath = `${window.location.pathname}?${url.toString()}`
+    return newPath
 }

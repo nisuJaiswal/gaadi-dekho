@@ -28,3 +28,20 @@ export interface CarType {
     transmission:string;
     year:number;
 }
+
+export interface FilterType {
+    manufacturer: string
+    year: number
+    fuel: string
+    limit: number
+    model: string
+}
+
+interface OptionTypes {
+    title: string
+    value: string
+}
+export interface CustomFilterType {
+    title: string
+    options: OptionTypes[]
+}
