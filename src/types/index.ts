@@ -45,3 +45,9 @@ export interface CustomFilterType {
     title: string
     options: OptionTypes[]
 }
+
+export interface ShowMoreType {
+    pageNumber: number
+    hasNext: boolean
+
+}

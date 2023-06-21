@@ -27,9 +27,8 @@ export const fetchCars = async(filters: FilterType) =>  {
     }
     
     const {data} = await axios.get(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&limit=${limit}&fuel_type=${fuel}&model=${model}`, {headers})
-    // const res = await axios.get(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m8&model=bmw`, {headers})
     
-    console.log(data)
+    // console.log(data)
     return data
 }
 
