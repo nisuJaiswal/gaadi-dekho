@@ -49,8 +49,7 @@ const Home = () => {
 
   useEffect(() => {
     getCars();
-  }, [manufacturer, limit, fuel, model, year]);
-
+  }, [fuel, year, limit, manufacturer, model]);
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
@@ -78,7 +77,7 @@ const Home = () => {
           <section>
             <div className="home__cars-wrapper">
               {allCars.map((car) => (
-                <CarCard car={car} />
+                <CarCard car={car} key={car?.make} />
               ))}
             </div>
             {loading && (
