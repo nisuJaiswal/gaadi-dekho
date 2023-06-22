@@ -3,14 +3,11 @@
 import { ShowMoreType } from "@/types";
 import { useRouter } from "next/navigation";
 import CustomButton from "./CustomButton";
-import { updateSearchParams } from "@/utils";
 
-const ShowMore = ({ pageNumber, hasNext }: ShowMoreType) => {
-  const Router = useRouter();
+const ShowMore = ({ pageNumber, hasNext, setLimit }: ShowMoreType) => {
   const handleNavigation = () => {
     const newLimit = (pageNumber + 1) * 10;
-    const newPath = updateSearchParams("limit", `${newLimit}`);
-    Router.push(newPath);
+    setLimit(newLimit);
   };
   return (
     <div className="w-full flex-center mt-10">
