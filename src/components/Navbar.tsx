@@ -10,10 +10,10 @@ const Navbar = () => {
           {" "}
           <Image src="/logo.svg" alt="logo" width={120} height={60} />
         </Link>
-        <CustomButton
+        {/* <CustomButton
           title="Sign In"
           customStyles="text-black bg-gray-100 rounded-full"
-        />
+        /> */}
       </nav>
     </header>
   );
