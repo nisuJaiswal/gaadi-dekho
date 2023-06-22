@@ -1,4 +1,4 @@
-## Live Application: https://gaadi-dekho.vercel.app
+### Live Application: https://gaadi-dekho.vercel.app
 
 **Build using** : NextJs
 
